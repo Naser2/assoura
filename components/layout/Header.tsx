@@ -39,13 +39,13 @@ export function Header() {
   }, [])
 
   // Determine if header should show light or dark style
-  const showLightHeader = scrolled && !isOpen
+  const showLightHeader = scrolled
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         showLightHeader
-          ? 'bg-white/95 backdrop-blur-md shadow-soft py-2'
+          ? 'bg-[#fcf5ebcc] backdrop-blur-md shadow-soft py-2'
           : 'bg-transparent py-4'
       }`}
     >
@@ -116,24 +116,26 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Ouvrir le menu"
-            title="Ouvrir le menu"
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              showLightHeader ? 'text-neutral-700' : 'text-white'
-            }`}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
+          {/* Mobile Menu Button - hidden when drawer is open */}
+          {!isOpen && (
+            <button
+              type="button"
+              onClick={() => setIsOpen(true)}
+              aria-label="Ouvrir le menu"
+              title="Ouvrir le menu"
+              className={`lg:hidden p-2 rounded-lg transition-colors ${
+                showLightHeader ? 'text-neutral-700' : 'text-white'
+              }`}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          )}
         </nav>
       </div>
 
       {/* Mobile Menu Drawer Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
+        className={`lg:hidden fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300 ${
           isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
         onClick={() => setIsOpen(false)}
@@ -141,7 +143,7 @@ export function Header() {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`lg:hidden fixed top-0 left-0 h-full w-[85%] max-w-sm bg-neutral-900 z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`lg:hidden fixed inset-0 h-dvh w-full bg-neutral-900 z-[70] transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >

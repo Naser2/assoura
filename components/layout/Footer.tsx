@@ -34,7 +34,7 @@ export function Footer() {
     <footer className="bg-earth-dark text-white">
       {/* Main Footer */}
       <div className="section-container section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 px-4 pb-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">

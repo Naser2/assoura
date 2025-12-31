@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 
 const testimonials = [
@@ -9,28 +10,28 @@ const testimonials = [
     name: 'Amadou Traoré',
     role: 'Musicien & Arrangeur',
     content: 'L\'Académie Assoura représente une opportunité unique pour les jeunes talents burkinabè. Enfin une structure qui comprend les besoins réels de notre industrie musicale.',
-    image: '/images/testimonials/amadou.jpg',
+    image: '/portraits/amadou_traore.jpeg',
   },
   {
     id: 2,
     name: 'Fatou Diallo',
     role: 'Chanteuse',
     content: 'La vision de Bil Aka Kora pour préserver notre patrimoine musical tout en nous préparant aux défis contemporains est exactement ce dont notre pays a besoin.',
-    image: '/images/testimonials/fatou.jpg',
+    image: '/new_images/lady_signing_passion_orangish.png',
   },
   {
     id: 3,
-    name: 'Marco Giovinazzo',
-    role: 'Formateur Tamtando',
+    name: 'Moussa Konaté',
+    role: 'Formateur Studio',
     content: 'Collaborer avec Assoura est une expérience enrichissante. Le partage culturel entre l\'Italie et le Burkina Faso à travers la musique crée des ponts extraordinaires.',
-    image: '/images/testimonials/marco.jpg',
+    image: '/new_images/happy_existing_session.png',
   },
   {
     id: 4,
-    name: 'Luigina Stevenin',
-    role: 'Directrice Artistique Tamtando',
+    name: 'Aminata Sawadogo',
+    role: 'Artiste Vocale',
     content: 'Travailler avec les enfants et les personnes en situation de handicap à travers la musique est une mission qui nous tient à cœur. Assoura incarne ces valeurs d\'inclusion.',
-    image: '/images/testimonials/luigina.jpg',
+    image: '/new_images/passion_singing_yellow_green.png',
   },
 ]
 
@@ -79,16 +80,21 @@ export function TestimonialsSection() {
                 </p>
                 
                 <div className="flex items-center gap-4">
-                  {/* Avatar placeholder */}
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-100 to-accent-sand flex items-center justify-center">
-                    <span className="text-2xl">👤</span>
+                  {/* Avatar */}
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                    <Image
+                      src={testimonials[currentIndex].image}
+                      alt={testimonials[currentIndex].name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-lg">
                       {testimonials[currentIndex].name}
                     </h4>
-                    <p className="text-primary-500 text-sm">
+                    <p className="text-primary-500 text-base">
                       {testimonials[currentIndex].role}
                     </p>
                   </div>

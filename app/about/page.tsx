@@ -54,6 +54,83 @@ const timeline = [
   },
 ]
 
+interface FounderCardProps {
+  image: {
+    src: string
+    alt: string
+    type: 'avatar' | 'logo'
+  }
+  name: string
+  role: string
+  roleColor: string
+  description: string
+}
+
+function FounderCard({ image, name, role, roleColor, description }: FounderCardProps) {
+  return (
+    <div className="card card-hover p-8">
+      <div className="flex items-start gap-6">
+        {image.type === 'avatar' ? (
+          <div className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-primary-100">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={96}
+              height={96}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="w-28 h-20 rounded-xl bg-white flex items-center justify-center flex-shrink-0 p-2">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={234}
+              height={80}
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        )}
+        <div>
+          <h3 className="text-2xl font-semibold mb-2">{name}</h3>
+          <p className={`${roleColor} md:mb-4`}>{role}</p>
+          <p className="hidden md:block text-neutral-600 text-sm leading-relaxed">
+            {description}
+          </p>
+        </div>
+      </div>
+      <p className="md:hidden text-neutral-600 text-sm leading-relaxed mt-6">
+        {description}
+      </p>
+    </div>
+  )
+}
+
+const founders: FounderCardProps[] = [
+  {
+    image: {
+      src: '/portraits/bill_portrait.jpg',
+      alt: 'Bil Aka Kora',
+      type: 'avatar',
+    },
+    name: 'Bil Aka Kora',
+    role: 'Fondateur • Artiste Burkinabè',
+    roleColor: 'text-primary-500',
+    description: "À travers la Djongo music, Bil Aka Kora a su conjuguer traditions et modernité pour donner une identité forte à la musique burkinabè sur la scène internationale. Son expertise dans la fusion des rythmes traditionnels kassena avec des influences modernes servira de référence pour l'Académie.",
+  },
+  {
+    image: {
+      src: '/portraits/logo/logo_tamtando_234x80_marrone.png',
+      alt: 'Tamtando',
+      type: 'logo',
+    },
+    name: 'Tamtando',
+    role: 'Partenaire Principal • Italie',
+    roleColor: 'text-accent-orange',
+    description: "Groupe italien spécialisé dans les programmes musicaux inclusifs, Tamtando a développé une expertise unique dans l'accompagnement des personnes en situation de déficience intellectuelle à travers la musique. Cette expérience enrichit la dimension inclusive de l'Académie Assoura.",
+  },
+]
+
 export default function AboutPage() {
   return (
     <>
@@ -178,57 +255,9 @@ export default function AboutPage() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Bil Aka Kora */}
-            <div className="card card-hover p-8">
-              <div className="flex items-start gap-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-primary-100">
-                  <Image
-                    src="/portraits/bill_portrait.jpg"
-                    alt="Bil Aka Kora"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold mb-2">Bil Aka Kora</h3>
-                  <p className="text-primary-500 mb-4">Fondateur • Artiste Burkinabè</p>
-                  <p className="text-neutral-600 text-sm leading-relaxed">
-                    À travers la Djongo music, Bil Aka Kora a su conjuguer traditions
-                    et modernité pour donner une identité forte à la musique burkinabè
-                    sur la scène internationale. Son expertise dans la fusion des
-                    rythmes traditionnels kassena avec des influences modernes servira
-                    de référence pour l&apos;Académie.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Tamtando */}
-            <div className="card card-hover p-8">
-              <div className="flex items-start gap-6">
-                <div className="w-28 h-20 rounded-xl bg-white flex items-center justify-center flex-shrink-0 p-2">
-                  <Image
-                    src="/portraits/logo/logo_tamtando_234x80_marrone.png"
-                    alt="Tamtando"
-                    width={234}
-                    height={80}
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold mb-2">Tamtando</h3>
-                  <p className="text-accent-orange mb-4">Partenaire Principal • Italie</p>
-                  <p className="text-neutral-600 text-sm leading-relaxed">
-                    Groupe italien spécialisé dans les programmes musicaux inclusifs,
-                    Tamtando a développé une expertise unique dans l&apos;accompagnement
-                    des personnes en situation de déficience intellectuelle à travers
-                    la musique. Cette expérience enrichit la dimension inclusive de
-                    l&apos;Académie Assoura.
-                  </p>
-                </div>
-              </div>
-            </div>
+            {founders.map((founder) => (
+              <FounderCard key={founder.name} {...founder} />
+            ))}
           </div>
         </div>
       </section>

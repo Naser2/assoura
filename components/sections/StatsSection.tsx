@@ -114,7 +114,7 @@ export function StatsSection() {
         </div>
 
         {/* Infrastructure Preview */}
-        <div className="mt-16 grid md:grid-cols-5 gap-4">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-4">
           {[
             { name: 'Résidence', price: '39.1M FCFA' },
             { name: 'Bâtiment Admin.', price: '16.6M FCFA' },
@@ -124,10 +124,10 @@ export function StatsSection() {
           ].map((item) => (
             <div
               key={item.name}
-              className="p-4 rounded-xl bg-white/5 border border-white/10 text-center hover:border-accent-gold/50 transition-colors"
+              className="p-6 rounded-xl bg-white/5 border border-white/10 text-center hover:border-accent-gold/50 transition-colors"
             >
-              <p className="text-white/80 text-sm font-medium mb-1">{item.name}</p>
-              <p className="text-accent-gold text-xs">{item.price}</p>
+              <h4 className="text-white font-semibold text-lg mb-2">{item.name}</h4>
+              <p className="text-accent-gold text-base font-medium">{item.price}</p>
             </div>
           ))}
         </div>

@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { Play, ChevronDown, Music, Users, GraduationCap } from 'lucide-react'
+import { Play, ChevronDown } from 'lucide-react'
+import { Button } from '@/components/ui'
+import { HeroStatsCarousel } from './HeroStatsCarousel'
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -53,7 +54,7 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 section-container pt-32 pb-20">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl px-3 max-w-[90vw]">
           {/* Badge */}
           <div 
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8 transition-all duration-700 ${
@@ -62,7 +63,7 @@ export function HeroSection() {
           >
             <span className="w-2 h-2 bg-accent-gold rounded-full animate-pulse" />
             <span className="text-white/90 text-sm font-medium">
-              En collaboration avec Tamtando • Burkina Faso
+              En collaboration: Tamtando • Burkina Faso
             </span>
           </div>
 
@@ -97,47 +98,28 @@ export function HeroSection() {
           </p>
 
           {/* CTA Buttons */}
-          <div 
-            className={`flex flex-wrap gap-4 mb-16 transition-all duration-700 delay-300 ${
+          <div
+            className={`flex flex-row gap-3 sm:gap-4 mb-16 transition-all duration-700 delay-300 ${
               mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <Link href="/programs" className="btn-primary btn-lg">
-              Découvrir nos formations
-            </Link>
-            <button className="btn btn-lg bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 group">
-              <Play className="w-5 h-5 mr-2 group-hover:text-accent-gold transition-colors" />
+            <Button href="/programs" variant="primary" size="lg">
+              <span className="lg:hidden">Nos formations</span>
+              <span className="hidden lg:inline">Découvrir nos formations</span>
+            </Button>
+            <Button variant="secondary" size="lg" icon={<Play className="w-5 h-5" />}>
               Voir la vidéo
-            </button>
+            </Button>
           </div>
 
-          {/* Quick Stats */}
-          <div 
-            className={`grid grid-cols-3 gap-8 max-w-lg transition-all duration-700 delay-400 ${
+          {/* Artists Carousel */}
+          <div
+            className={`transition-all duration-700 delay-400 ${
               mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary-500/20 flex items-center justify-center">
-                <Music className="w-6 h-6 text-primary-400" />
-              </div>
-              <p className="text-2xl font-bold text-white">5+</p>
-              <p className="text-white/60 text-sm">Programmes</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-accent-gold/20 flex items-center justify-center">
-                <Users className="w-6 h-6 text-accent-gold" />
-              </div>
-              <p className="text-2xl font-bold text-white">100+</p>
-              <p className="text-white/60 text-sm">Étudiants</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-white" />
-              </div>
-              <p className="text-2xl font-bold text-white">15+</p>
-              <p className="text-white/60 text-sm">Formateurs</p>
-            </div>
+            <p className="text-white/60 text-sm mb-3">Artistes en Résidence</p>
+            <HeroStatsCarousel />
           </div>
         </div>
       </div>

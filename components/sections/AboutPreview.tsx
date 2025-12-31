@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Target, Heart, Globe, Sparkles } from 'lucide-react'
+import { CategoryPill, CornerPatterns } from '@/components/ui'
 
 const features = [
   {
@@ -34,23 +35,20 @@ const features = [
 export function AboutPreview() {
   return (
     <section className="relative section-padding bg-white overflow-hidden">
-      {/* Vertical pattern on left side - 20% width */}
-      <div
-        className="absolute left-0 top-0 bottom-0 w-[20%] opacity-15 pointer-events-none"
-        style={{
-          backgroundImage: `url("/pattern_vertical.png")`,
-          backgroundSize: 'contain',
-          backgroundRepeat: 'repeat-y',
-          backgroundPosition: 'left center',
-        }}
+      {/* 4 Corner Patterns - Flyer Style */}
+      <CornerPatterns
+        patternUrl="/pattern_horizontal_continued_2.png"
+        opacity={100}
+        size="lg"
+        fillColor="#C41E3A"
       />
 
       <div className="section-container relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-4">
+          <CategoryPill size="lg" className="mb-4">
             À Propos de l&apos;Académie
-          </span>
+          </CategoryPill>
           <h2 className="mb-6">
             Une Vision pour la{' '}
             <span className="text-gradient">Musique Africaine</span>
@@ -140,9 +138,9 @@ export function AboutPreview() {
               </p>
             </div>
             
-            <Link 
-              href="/about" 
-              className="inline-flex items-center gap-2 mt-8 text-primary-500 font-medium hover:text-primary-600 group"
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center lg:justify-start gap-2 mt-8 text-primary-500 font-medium hover:text-primary-600 group w-full lg:w-auto"
             >
               En savoir plus sur notre histoire
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
