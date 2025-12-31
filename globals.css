@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Bebas+Neue&display=swap');
+
+:root {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  
+  /* Colors */
+  --color-primary: #C41E3A;
+  --color-primary-dark: #A31830;
+  --color-accent-gold: #D4AF37;
+  --color-accent-orange: #E65C00;
+  --color-cream: #FDF8F3;
+  --color-sand: #F5E6D3;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-body text-neutral-800 bg-accent-cream antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+  }
+
+  /* Google Flow-style hero heading */
+  .hero-title-flow {
+    font-size: 2.8125rem; /* 45px mobile */
+    font-weight: 400;
+    line-height: 3.25rem; /* 52px */
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title-flow {
+      font-size: 3.5625rem; /* 57px desktop */
+      line-height: 4rem; /* 64px */
+    }
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+  
+  /* Custom Selection */
+  ::selection {
+    @apply bg-primary-500 text-white;
+  }
+}
+
+@layer components {
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Section padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white;
+  }
+  
+  .btn-accent {
+    @apply btn bg-accent-gold text-earth-dark hover:bg-yellow-500 focus:ring-accent-gold;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-2xl shadow-soft overflow-hidden transition-all duration-300;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  /* Decorative elements */
+  .decorative-line {
+    @apply w-16 h-1 bg-primary-500 rounded-full;
+  }
+  
+  .decorative-dot {
+    @apply w-3 h-3 bg-accent-gold rounded-full;
+  }
+  
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 via-accent-orange to-accent-gold bg-clip-text text-transparent;
+  }
+  
+  /* African pattern overlay */
+  .african-overlay {
+    position: relative;
+  }
+
+  .african-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("/pattern_horizontal_continued_2.png");
+    background-size: 200px;
+    background-repeat: repeat;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+  
+  /* Music notes decoration */
+  .music-decoration {
+    position: relative;
+  }
+  
+  .music-decoration::after {
+    content: '♪';
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    font-size: 2rem;
+    color: var(--color-primary);
+    opacity: 0.3;
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  /* Rounded corners African style */
+  .african-border {
+    @apply border-4 border-primary-500;
+    border-radius: 20px 4px 20px 4px;
+  }
+  
+  /* Hero text shadow */
+  .hero-text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
+  
+  /* No scrollbar */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Preserve aspect ratio */
+  .aspect-portrait {
+    aspect-ratio: 3/4;
+  }
+  
+  .aspect-landscape {
+    aspect-ratio: 16/9;
+  }
+  
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    @apply bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700;
+  }
+  
+  .bg-gradient-warm {
+    @apply bg-gradient-to-br from-accent-orange via-primary-500 to-primary-600;
+  }
+  
+  .bg-gradient-sand {
+    @apply bg-gradient-to-br from-accent-cream via-accent-sand to-earth-light;
+  }
+  
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-earth-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-600;
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
