@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, MapPin, Users, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ const events = [
     price: '10 000 FCFA',
     description: 'Explorez les rythmes traditionnels Kassena avec des maîtres percussionnistes locaux.',
     featured: false,
+    image: '/new_images/passion_singing_yellow_green.png',
   },
   {
     id: 'camp-vacances',
@@ -44,6 +46,7 @@ const events = [
     price: 'Sur inscription',
     description: 'Activités ludiques et immersives pour les tout-petits, enfants et adolescents pendant les vacances scolaires.',
     featured: false,
+    image: '/KidLooking_djemebe_smile_red_tone_and_projectnamde.png',
   },
   {
     id: 'concert-showcase',
@@ -55,6 +58,7 @@ const events = [
     price: 'Entrée libre',
     description: 'Les étudiants de l\'Académie présentent leurs créations et démontrent leurs acquis sur scène.',
     featured: false,
+    image: '/new_images/lady_signing_passion_orangish.png',
   },
 ]
 
@@ -170,8 +174,19 @@ export default function EventsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherEvents.map((event) => (
               <div key={event.id} className="card card-hover">
-                <div className="aspect-video bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center">
-                  <Calendar className="w-12 h-12 text-neutral-400" />
+                <div className="aspect-video bg-gradient-to-br from-neutral-100 to-neutral-200 relative overflow-hidden">
+                  {event.image ? (
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center h-full">
+                      <Calendar className="w-12 h-12 text-neutral-400" />
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-6">

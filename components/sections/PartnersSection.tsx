@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Users } from 'lucide-react'
 
 const partners = [
@@ -7,13 +8,15 @@ const partners = [
     name: 'Tamtando',
     type: 'Partenaire Principal',
     description: 'Groupe italien spécialisé dans les programmes musicaux inclusifs',
-    logo: '🎭',
+    logo: '/portraits/logo/logo_tamtando_234x80_marrone.png',
+    isImage: true,
   },
   {
     name: 'Bil Aka Kora',
     type: 'Fondateur',
     description: 'Artiste burkinabè, créateur de la Djongo music',
-    logo: '🎸',
+    logo: '/portraits/bill_portrait.jpg',
+    isAvatar: true,
   },
 ]
 
@@ -52,9 +55,31 @@ export function PartnersSection() {
             >
               <div className="card card-hover p-8 h-full">
                 <div className="flex items-start gap-6">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-50 to-accent-sand flex items-center justify-center text-4xl flex-shrink-0">
-                    {partner.logo}
-                  </div>
+                  {partner.isAvatar ? (
+                    <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-primary-100">
+                      <Image
+                        src={partner.logo}
+                        alt={partner.name}
+                        width={80}
+                        height={80}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : partner.isImage ? (
+                    <div className="w-24 h-20 rounded-xl bg-white flex items-center justify-center flex-shrink-0 p-2">
+                      <Image
+                        src={partner.logo}
+                        alt={partner.name}
+                        width={234}
+                        height={80}
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-50 to-accent-sand flex items-center justify-center text-4xl flex-shrink-0">
+                      {partner.logo}
+                    </div>
+                  )}
                   <div>
                     <span className="inline-block px-3 py-1 bg-primary-50 text-primary-600 text-xs rounded-full mb-3">
                       {partner.type}

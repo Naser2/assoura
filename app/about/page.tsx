@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Target, Heart, Globe, Sparkles, Users, Building2, Music } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -122,13 +123,13 @@ export default function AboutPage() {
             </div>
             
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary-100 to-accent-sand overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <Music className="w-24 h-24 text-primary-500/30 mx-auto mb-4" />
-                    <p className="text-neutral-500">Image du Burkina Faso</p>
-                  </div>
-                </div>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative">
+                <Image
+                  src="/new_images/recording_session_blue_organgish.png"
+                  alt="Session d'enregistrement à l'Académie Assoura"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-gold rounded-3xl -z-10" />
             </div>
@@ -180,37 +181,49 @@ export default function AboutPage() {
             {/* Bil Aka Kora */}
             <div className="card card-hover p-8">
               <div className="flex items-start gap-6">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary-100 to-accent-sand flex items-center justify-center text-4xl flex-shrink-0">
-                  🎸
+                <div className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-primary-100">
+                  <Image
+                    src="/portraits/bill_portrait.jpg"
+                    alt="Bil Aka Kora"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">Bil Aka Kora</h3>
                   <p className="text-primary-500 mb-4">Fondateur • Artiste Burkinabè</p>
                   <p className="text-neutral-600 text-sm leading-relaxed">
-                    À travers la Djongo music, Bil Aka Kora a su conjuguer traditions 
-                    et modernité pour donner une identité forte à la musique burkinabè 
-                    sur la scène internationale. Son expertise dans la fusion des 
-                    rythmes traditionnels kassena avec des influences modernes servira 
+                    À travers la Djongo music, Bil Aka Kora a su conjuguer traditions
+                    et modernité pour donner une identité forte à la musique burkinabè
+                    sur la scène internationale. Son expertise dans la fusion des
+                    rythmes traditionnels kassena avec des influences modernes servira
                     de référence pour l&apos;Académie.
                   </p>
                 </div>
               </div>
             </div>
-            
+
             {/* Tamtando */}
             <div className="card card-hover p-8">
               <div className="flex items-start gap-6">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-accent-orange/20 to-accent-gold/20 flex items-center justify-center text-4xl flex-shrink-0">
-                  🎭
+                <div className="w-28 h-20 rounded-xl bg-white flex items-center justify-center flex-shrink-0 p-2">
+                  <Image
+                    src="/portraits/logo/logo_tamtando_234x80_marrone.png"
+                    alt="Tamtando"
+                    width={234}
+                    height={80}
+                    className="w-full h-auto object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">Tamtando</h3>
                   <p className="text-accent-orange mb-4">Partenaire Principal • Italie</p>
                   <p className="text-neutral-600 text-sm leading-relaxed">
-                    Groupe italien spécialisé dans les programmes musicaux inclusifs, 
-                    Tamtando a développé une expertise unique dans l&apos;accompagnement 
-                    des personnes en situation de déficience intellectuelle à travers 
-                    la musique. Cette expérience enrichit la dimension inclusive de 
+                    Groupe italien spécialisé dans les programmes musicaux inclusifs,
+                    Tamtando a développé une expertise unique dans l&apos;accompagnement
+                    des personnes en situation de déficience intellectuelle à travers
+                    la musique. Cette expérience enrichit la dimension inclusive de
                     l&apos;Académie Assoura.
                   </p>
                 </div>
