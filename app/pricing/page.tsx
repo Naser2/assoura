@@ -102,11 +102,11 @@ export default function PricingPage() {
               <div
                 key={plan.name}
                 className={`relative card p-8 ${
-                  plan.popular ? 'border-2 border-primary-500 shadow-glow' : ''
+                  plan.popular ? 'border-2 border-primary-500 shadow-glow !overflow-visible' : ''
                 }`}
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary-500 text-white text-sm font-medium rounded-full">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary-500 text-white text-sm font-medium rounded-full whitespace-nowrap">
                     Populaire
                   </span>
                 )}
