@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Play, ChevronDown, Music, Users, GraduationCap } from 'lucide-react'
 
 export function HeroSection() {
@@ -14,15 +13,17 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <Image
-          src="/KidLooking_djemebe_smile_blackwhite.png"
-          alt="Enfant souriant avec djembé"
-          fill
-          className="object-cover object-center"
-          priority
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/Bill_hero_promo_1.mp4" type="video/mp4" />
+        </video>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
@@ -153,7 +154,7 @@ export function HeroSection() {
           <div
             className="absolute inset-0 opacity-20"
             style={{
-              backgroundImage: `url("/pattern_vertical.png")`,
+              // backgroundImage: `url("/pattern_vertical.png")`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center',

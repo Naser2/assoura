@@ -33,8 +33,19 @@ const features = [
 
 export function AboutPreview() {
   return (
-    <section className="section-padding bg-white african-overlay">
-      <div className="section-container">
+    <section className="relative section-padding bg-white overflow-hidden">
+      {/* Vertical pattern on left side - 20% width */}
+      <div
+        className="absolute left-0 top-0 bottom-0 w-[20%] opacity-15 pointer-events-none"
+        style={{
+          backgroundImage: `url("/pattern_vertical.png")`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'repeat-y',
+          backgroundPosition: 'left center',
+        }}
+      />
+
+      <div className="section-container relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-4">

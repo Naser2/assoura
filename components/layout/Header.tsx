@@ -38,10 +38,13 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Determine if header should show light or dark style
+  const showLightHeader = scrolled && !isOpen
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        showLightHeader
           ? 'bg-white/95 backdrop-blur-md shadow-soft py-2'
           : 'bg-transparent py-4'
       }`}
@@ -52,13 +55,11 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative h-12 w-auto">
               <Image
-                src="/app_logo_plus_name.png"
+                src={showLightHeader ? '/assoura_logo_light.png' : '/assoura_logo_dark.png'}
                 alt="Assoura - Académie des Métiers de la Musique"
                 width={180}
                 height={48}
-                className={`h-12 w-auto object-contain transition-all duration-300 ${
-                  scrolled ? '' : 'brightness-0 invert'
-                }`}
+                className="h-12 w-auto object-contain transition-all duration-300"
                 priority
               />
             </div>
@@ -76,7 +77,7 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-1 ${
-                    scrolled
+                    showLightHeader
                       ? 'text-neutral-700 hover:text-primary-500 hover:bg-primary-50'
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
@@ -122,7 +123,7 @@ export function Header() {
             aria-label="Ouvrir le menu"
             title="Ouvrir le menu"
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              scrolled ? 'text-neutral-700' : 'text-white'
+              showLightHeader ? 'text-neutral-700' : 'text-white'
             }`}
           >
             <Menu className="w-6 h-6" />
@@ -148,11 +149,11 @@ export function Header() {
           {/* Drawer Header */}
           <div className="flex items-center justify-between p-4 border-b border-neutral-800">
             <Image
-              src="/app_logo_plus_name.png"
+              src="/assoura_logo_dark.png"
               alt="Assoura"
               width={140}
               height={40}
-              className="h-10 w-auto object-contain brightness-0 invert"
+              className="h-10 w-auto object-contain"
             />
             <button
               type="button"
@@ -177,7 +178,7 @@ export function Header() {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex-1 overflow-y-auto px-4 py-2">
+          <div className="flex-1 overflow-y-auto px-4 py-2 z-50">
             <div className="space-y-1">
               {navigation.map((item) => {
                 const Icon = item.icon

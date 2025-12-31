@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Twitter } from 'lucide-react'
 
 const footerLinks = {
@@ -37,21 +38,13 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
-                  <svg viewBox="0 0 40 40" className="w-8 h-8 text-white" fill="currentColor">
-                    <rect x="8" y="8" width="4" height="24" rx="1" />
-                    <rect x="14" y="8" width="4" height="24" rx="1" />
-                    <rect x="20" y="8" width="4" height="24" rx="1" />
-                    <rect x="26" y="8" width="4" height="24" rx="1" />
-                    <rect x="6" y="4" width="28" height="4" rx="1" />
-                  </svg>
-                </div>
-                <div>
-                  <span className="font-display text-2xl tracking-wider">ASSOURA</span>
-                  <p className="text-xs text-white/60">Académie des Métiers de la Musique</p>
-                </div>
-              </div>
+              <Image
+                src="/assoura_logo_dark.png"
+                alt="Assoura - Académie des Métiers de la Musique"
+                width={180}
+                height={60}
+                className="h-14 w-auto object-contain"
+              />
             </Link>
             
             <p className="mt-6 text-white/70 text-sm leading-relaxed">
